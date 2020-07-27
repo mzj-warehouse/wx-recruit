@@ -27,6 +27,7 @@ media
 # Python #
 *.py[cod]
 *$py.class
+*/.idea/
  
 # Distribution / packaging
 .Python build/
