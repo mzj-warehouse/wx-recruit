@@ -1,0 +1,6 @@
+/* pages/edit-my/edit-my.wxss */
+@import "/style/item-cells.wxss";
+@import "/style/blue-btn.wxss";
+page{
+    background-color: #f5f6f9;
+}

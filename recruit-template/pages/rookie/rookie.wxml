@@ -1,0 +1,23 @@
+<import src="../tpl/position-item/position-item.wxml"/>
+<include src="../tpl/search/search.wxml"/>
+
+<view class="container">
+  <scroll-view scroll-y style="height: {{viewHeigh}}px;" bindscrolltolower="lower">
+    
+    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+    </view>
+
+    <view class="loading" hidden="{{loadingHidden}}">{{loadingText}}</view>
+  </scroll-view>
+
+   <!-- <view class="alert-rookie" hidden="{{alertRookie}}"> 
+    <view class="mode-rookie"></view> -->
+    <!-- <view class="content-rookie">
+        <image class="alert-img" src="/images/alert_rookie.png"></image>
+        <view class="close-box" bindtap="closeAlertRookieTap">
+            <image src="/images/close_rookie.png"></image>
+        </view>
+    </view> -->
+  <!-- </view> -->
+ </view> 

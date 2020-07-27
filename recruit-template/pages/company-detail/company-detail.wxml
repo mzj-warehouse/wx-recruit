@@ -1,0 +1,50 @@
+<!--pages/company-detail/company-detail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+
+<swiper class="swiper" indicator-dots="true" autoplay="false" interval="5000" duration="500">
+    <swiper-item>
+        <image src="{{enterprise_img}}" class="media-img" mode="aspectFill"/>
+    </swiper-item>
+</swiper>
+
+<view class="company-m">
+  <image class="com-logo" src="{{company_info.enterprise_logo}}" data-pid="{{company_info.p_id}}"></image>
+  <view class="com">
+    <view class="com-name">{{company_info.enterprise_name}}</view>
+    <view class="com-address">{{company_info.enterprise_address}}</view>
+  </view>
+</view>
+<view class="content">
+  <view class="title">公司描述</view>
+  <view class="main">
+    <scroll-view class="com-content" scroll-y="true">
+      <!--{{company_info.enterprise_desc}}-->
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="title">在招职位</view>
+  <view wx:for="{{company_info.position}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+
+  </view>
+
+  <view class="item" wx:for="{{company_info.position}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+    <view class="item-main">
+      <view class="job">
+        <text class="job-position" data-id="{{id}}">{{item.p_name}}</text>
+        <text class="job-Salary">{{item.p_wages}}</text>
+      </view>
+
+      <view class="secondary">
+        <text class="secondary-list">{{item.p_address}}</text>
+        <text class="secondary-list">{{item.p_edujy}}</text>
+        <text>{{item.p_education}}</text>
+        <text class="date">{{item.p_addtime}}</text>
+      </view>
+    </view>
+  </view>
+
+
+</view>

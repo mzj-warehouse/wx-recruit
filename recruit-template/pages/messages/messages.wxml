@@ -1,0 +1,88 @@
+<!--pages/messages/messages.wxml-->
+<import src="../tpl/position-item/position-item.wxml" />
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">已投递</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">被查看</view>
+  <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">有意向</view>
+  <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">邀面试</view>
+  <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">不合适</view>
+</view>
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="min-height:{{winHeight - 47}}px" bindchange="bindChangeTab">
+  <!-- 全部 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" class="auto-scroll">
+      <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+        <template is="position-item" data="{{...item}}" />
+      </view>
+    </scroll-view>
+    <view class="mes-null" hidden="{{isHiddenMes}}">
+      <image class="icon-null" src="/images/mes-null.png"></image>
+      <view class="hint">暂无记录</view>
+      <view class="btn-box">
+
+        <button catchtap="bulidResumeTap" class="btn-sure" size="default" hover-class="btn-sure-hover">完善简历 寻找更多机会 </button>
+      </view>
+    </view>
+  </swiper-item>
+  <!-- 被查看 -->
+  <swiper-item>
+    <scroll-view scroll-y="true" class="auto-scroll">
+      <view wx:for="{{chakan}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+        <template is="position-item" data="{{...item}}" />
+      </view>
+    </scroll-view>
+    <view>{{list}}</view>
+  </swiper-item>
+  <!-- 有意向 -->
+  <swiper-item>
+
+    <view wx:for="{{yixiang}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+      <view class="content-box">
+        <view class="content">你好，该公司已查看了您的简历，并有意向与您进一步沟通，请保持电话畅通，祝您体育职场一帆风顺。</view>
+      </view>
+    </view>
+
+
+
+  </swiper-item>
+  <!-- 邀面试 -->
+  <swiper-item>
+    <view wx:for="{{mianshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+      <view class="content-box">
+        <view class="content">
+          <view class="list">
+            <text class="list-left">时间</text>
+            <text>2017年05月02日</text>
+          </view>
+          <view class="list">
+            <text class="list-left">地点</text>
+            <text catchtap="mapTap" class="blue">{{mapPlace}}</text>
+          </view>
+          <view class="list">
+            <text class="list-left" style="margin-right:68rpx;">联系人</text>
+            <text>程序斯达康</text>
+          </view>
+          <view class="list">
+            <text class="list-left">备注</text>
+            <text>请带一份简历</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+  </swiper-item>
+  <!-- 不合适 -->
+  <swiper-item>
+    <view wx:for="{{buheshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+      <view class="content-box">
+        <view class="content">非常荣幸收到您的简历，经过我们评估，认为您与该职位不太合适，无法进入面试阶段。相信更好的机会一定还在翘首期盼着您，赶快调整心态，做好充足的准备重新出发吧！(๑•̀ㅂ•́)و✧</view>
+      </view>
+    </view>
+
+  </swiper-item>
+</swiper>

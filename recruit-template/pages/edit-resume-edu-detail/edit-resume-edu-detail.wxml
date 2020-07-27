@@ -1,0 +1,47 @@
+<!--pages/edit-resume-edu-detail/edit-resume-edu-detail.wxml-->
+<view class="item-cells no-top">
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>学校名称</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="{{schoolname}}"  bindfocus="schoolfocus" bindblur="schoolblur" placeholder="{{school}}" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>专业名称</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" bindfocus="majorfocus" bindblur="majorblur" value="{{profession}}" placeholder="{{major}}"/>
+    </view>
+  </view>
+  
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>学历</text>
+    </view>
+    
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeEduLevel" value="{{edulevelindex}}" range="{{edulevellist}}">
+      <view class="picker">
+        {{edulevellist[edulevelindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>毕业时间</text>
+    </view>
+    <picker class="item-cell-ft blue" mode="date" value="{{graduation}}" fields="month" start="2000-07" end="{{raduationTime}}" bindchange="bindDateChangeGraduation">
+    <view class="picker">
+      {{graduation}}
+    </view>
+  </picker>
+  </view>
+
+</view> 
+<view class="btn-box">
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}" catchtap="removeSchoolTap"> 删除教育经历 </button>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitSchoolTap"> 保存 </button>
+</view>
+

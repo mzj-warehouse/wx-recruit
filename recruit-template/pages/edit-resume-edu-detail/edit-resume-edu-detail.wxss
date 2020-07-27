@@ -1,0 +1,13 @@
+/* pages/edit-resume-edu-detail/edit-resume-edu-detail.wxss */
+@import "/style/item-cells.wxss";
+@import "/style/blue-btn.wxss";
+.btn-box{
+  margin-top: 300rpx;
+}
+view,input{
+  color: #222;
+  font-weight: bold;
+}
+text{
+  color: #666;
+}

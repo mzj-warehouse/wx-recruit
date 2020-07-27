@@ -1,0 +1,55 @@
+<!--pages/edit-resume-dreamposi/edit-resume-dreamposi.wxml-->
+
+<view class="item-cells no-top">
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>期望职位</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input bindfocus="desiredpositionfocus" bindblur="desiredpositionblur" type="text" value="{{dreamposi}}" placeholder="{{desiredposition}}" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>工作类型</text>
+    </view>
+    
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeWorkType" value="{{workTypeindex}}" range="{{workTypelist}}">
+      <view class="picker">
+        {{workTypelist[workTypeindex]}}
+      </view>
+    </picker>
+  </view>
+  
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>期望城市</text>
+    </view>
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeCity" value="{{cityindex}}" range="{{citylist}}">
+      <view class="picker">
+        {{citylist[cityindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>期望薪资</text>
+    </view>
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangesSalary" value="{{salaryindex}}" range="{{salarylist}}">
+      <view class="picker">
+        {{salarylist[salaryindex]}}
+      </view>
+    </picker>
+  </view>
+  
+ 
+
+</view> 
+<view class="btn-box" wx:if="{{isHaveResume}}">
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" bindtap="saveDreamPosi"> 保存 </button>
+</view>
+
+<view class="btn-box" wx:else>
+  <button class="btn-sure m-b" size="default" hover-class="btn-sure-hover" catchtap="subOver"> 完成 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="subPre"> 上一步 </button> 
+</view>

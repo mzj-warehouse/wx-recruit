@@ -1,0 +1,63 @@
+<!--pages/position-detail/position-detail.wxml-->
+<import src="../tpl/position-item/position-item.wxml" />
+<import src="../../wxParse/wxParse.wxml"/>
+<!-- <scroll-view style="height:{{height}};" scroll-top="0"> -->
+ <view class="header" style="overflow:hidden">
+  <view class="position">
+    <view class="posi">
+      <text class="name">{{position_content.p_name}}</text>
+      <text class="salary">{{position_content.p_wages}}</text>
+    </view>
+    <view class="posi-list">
+      <text class="field">{{position_content.p_address}}</text>
+      <text class="field">{{position_content.p_edujy}}</text>
+      <text class="field">{{position_content.p_education}}</text>
+      <text>{{position_content.p_type_name}}</text>
+    </view>
+  </view>
+  <view class="company-m" data-pid="{{position_content.p_id}}" catchtap="bindPositionDetailTap">
+    <image class="com-logo" src="{{position_content.enterprise_logo}}"></image>
+    <view class="com">
+      <view class="com-name">{{position_content.enterprise_name}}</view>
+      <view class="com-address">{{position_content.p_address}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="title">职位描述</view>
+  <view class="main">
+    <!--{{position_content.p_text}}-->
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>
+
+<view class="btn-box">
+  <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap" disabled="{{submitdisabled}}">{{submitText}}</button>
+</view>
+
+<view class="mode-bg" hidden="{{mode}}" animation="{{animationData}}" catchtap="closeTap"></view>
+<view class="send-sucess" hidden="{{mode}}" animation="{{animationData}}">
+  <view class="suc-tip">
+    <view class="suc-tip-bottom">
+      <image class="gou" src="/images/posi-succ.png"></image>
+      <view class="tip-content blue">恭喜！投递成功！</view>
+    </view>
+  </view>
+  <view class="anthoer-posi">
+    <view class="posi-tip">这些职位也可考虑下</view>
+    <scroll-view scroll-y="true">
+    
+      <view wx:for="{{similarPosi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+    </view>
+
+    </scroll-view>
+  </view>
+  <view class="btn-box">
+    <button catchtap="closeTap" class="btn-send-resume" size="default" hover-class="btn-send-resume-hover">关闭</button>
+  </view>
+  
+ </view> 
+<view style="height:0rpx;"></view>
+<!-- </scroll-view> -->
